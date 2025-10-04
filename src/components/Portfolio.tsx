@@ -7,7 +7,7 @@ import VideoModal from "@/components/ui/VideoModal";
 import techVideo from '../../public/videos/Tech_Innovation_Summit.mp4';
 import commercialVideo from '../../public/videos/Commercial_Luxury_Brand.mp4';
 import documentaryVideo from '../../public/videos/Film_Documentary.mp4';
-import fashionVideo from '../../public/videos/Event_fashion.mp4';
+import fashionVideo from '../../public/videos/Event_Fashion.mp4';
 import productVideo from '../../public/videos/Commercial_Product_Launch.mp4';
 import musicVideo from '../../public/videos/Music_Video_Production.mp4';
 
