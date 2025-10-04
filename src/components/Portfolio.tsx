@@ -1,17 +1,9 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import VideoModal from "@/components/ui/VideoModal"; 
+import VideoModal from "@/components/ui/VideoModal";
 
-// Import videos
-import techVideo from './videos/Tech_Innovation_Summit.mp4';
-import commercialVideo from './videos/Commercial_Luxury_Brand.mp4';
-import documentaryVideo from './videos/Film_Documentary.mp4';
-import fashionVideo from './videos/Event_fashion.mp4';
-import productVideo from './videos/Commercial_Product_Launch.mp4';
-import musicVideo from './videos/Music_Video_Production.mp4';
-
-// Import thumbnails
+// Import thumbnails (These are correct because they are inside the 'src' folder)
 import techThumbnail from './thumbnails/tech_summit.png';
 import commercialThumbnail from './thumbnails/luxury_brand.png';
 import documentaryThumbnail from './thumbnails/urban_stories.png';
@@ -19,17 +11,18 @@ import fashionThumbnail from './thumbnails/fashion_week.png';
 import productThumbnail from './thumbnails/product_launch.png';
 import musicThumbnail from './thumbnails/music_video.png';
 
+// The video files are now referenced as absolute string paths from the 'public' folder
 const portfolioItems = [
-  { title: "Tech Innovation Summit 2024", category: "Corporate", video: techVideo, thumbnail: techThumbnail },
-  { title: "Luxury Brand Campaign", category: "Commercial", video: commercialVideo, thumbnail: commercialThumbnail },
-  { title: "Documentary: Urban Stories", category: "Film", video: documentaryVideo, thumbnail: documentaryThumbnail },
-  { title: "Fashion Week Highlights", category: "Event", video: fashionVideo, thumbnail: fashionThumbnail },
-  { title: "Product Launch Video", category: "Commercial", video: productVideo, thumbnail: productThumbnail },
-  { title: "Music Video Production", category: "Music", video: musicVideo, thumbnail: musicThumbnail },
+  { title: "Tech Innovation Summit 2024", category: "Corporate", video: "/videos/Tech_Innovation_Summit.mp4", thumbnail: techThumbnail },
+  { title: "Luxury Brand Campaign", category: "Commercial", video: "/videos/Commercial_Luxury_Brand.mp4", thumbnail: commercialThumbnail },
+  { title: "Documentary: Urban Stories", category: "Film", video: "/videos/Film_Documentary.mp4", thumbnail: documentaryThumbnail },
+  { title: "Fashion Week Highlights", category: "Event", video: "/videos/Event_fashion.mp4", thumbnail: fashionThumbnail },
+  { title: "Product Launch Video", category: "Commercial", video: "/videos/Commercial_Product_Launch.mp4", thumbnail: productThumbnail },
+  { title: "Music Video Production", category: "Music", video: "/videos/Music_Video_Production.mp4", thumbnail: musicThumbnail },
 ];
 
 const Portfolio = () => {
-  // 1. State for managing the modal
+  // State for managing the modal
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   return (
@@ -47,7 +40,7 @@ const Portfolio = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioItems.map((item, index) => (
-              // 2. Add the onClick handler to the Card
+              // Add the onClick handler to the Card
               <Card
                 key={index}
                 className="group overflow-hidden cursor-pointer elegant-shadow hover:glow transition-all duration-500 animate-fade-in-up"
@@ -56,7 +49,7 @@ const Portfolio = () => {
               >
                 <div className="relative aspect-video overflow-hidden">
                   
-                  {/* 3. Display the thumbnail IMG, not the VIDEO */}
+                  {/* Display the thumbnail IMG */}
                   <img
                     src={item.thumbnail}
                     alt={item.title}
@@ -81,7 +74,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* 4. Conditionally render the modal at the end */}
+      {/* Conditionally render the modal at the end */}
       {selectedVideo && (
         <VideoModal 
           videoSrc={selectedVideo} 
