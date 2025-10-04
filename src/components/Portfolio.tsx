@@ -1,17 +1,9 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import VideoModal from "@/components/ui/VideoModal"; 
+import VideoModal from "@/components/ui/VideoModal";
 
-// Import videos
-import techVideo from '../../public/videos/Tech_Innovation_Summit.mp4';
-import commercialVideo from '../../public/videos/Commercial_Luxury_Brand.mp4';
-import documentaryVideo from '../../public/videos/Film_Documentary.mp4';
-import fashionVideo from '../../public/videos/Event_fashion.mp4';
-import productVideo from '../../public/videos/Commercial_Product_Launch.mp4';
-import musicVideo from '../../public/videos/Music_Video_Production.mp4';
-
-// Import thumbnails
+// Import thumbnails (These are correct because they are in the 'src' folder)
 import techThumbnail from './thumbnails/tech_summit.png';
 import commercialThumbnail from './thumbnails/luxury_brand.png';
 import documentaryThumbnail from './thumbnails/urban_stories.png';
@@ -19,17 +11,17 @@ import fashionThumbnail from './thumbnails/fashion_week.png';
 import productThumbnail from './thumbnails/product_launch.png';
 import musicThumbnail from './thumbnails/music_video.png';
 
+// The final, correct portfolioItems array with absolute paths matching your files
 const portfolioItems = [
-  { title: "Tech Innovation Summit 2024", category: "Corporate", video: "../../public/videos/Tech_Innovation_Summit.mp4", thumbnail: techThumbnail },
-  { title: "Luxury Brand Campaign", category: "Commercial", video: "../../public/videos/Commercial_Luxury_Brand.mp4", thumbnail: commercialThumbnail },
-  { title: "Documentary: Urban Stories", category: "Film", video: "../../public/videos/Film_Documentary.mp4", thumbnail: documentaryThumbnail },
-  { title: "Fashion Week Highlights", category: "Event", video: "../../public/videos/Event_Fashion.mp4", thumbnail: fashionThumbnail },
-  { title: "Product Launch Video", category: "Commercial", video: "../../public/videos/Commercial_Product_Launch.mp4", thumbnail: productThumbnail },
-  { title: "Music Video Production", category: "Music", video: "../../public/videos/Music_Video_Production.mp4", thumbnail: musicThumbnail },
+  { title: "Tech Innovation Summit 2024", category: "Corporate", video: "/videos/Tech_Innovation_Summit.mp4", thumbnail: techThumbnail },
+  { title: "Luxury Brand Campaign", category: "Commercial", video: "/videos/Commercial_Luxury_Brand.mp4", thumbnail: commercialThumbnail },
+  { title: "Documentary: Urban Stories", category: "Film", video: "/videos/Film_Documentary.mp4", thumbnail: documentaryThumbnail },
+  { title: "Fashion Week Highlights", category: "Event", video: "/videos/Event_Fashion.mp4", thumbnail: fashionThumbnail },
+  { title: "Product Launch Video", category: "Commercial", video: "/videos/Commercial_Product_Launch.mp4", thumbnail: productThumbnail },
+  { title: "Music Video Production", category: "Music", video: "/videos/Music_Video_Production.mp4", thumbnail: musicThumbnail },
 ];
 
 const Portfolio = () => {
-  // 1. State for managing the modal
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   return (
@@ -47,7 +39,6 @@ const Portfolio = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioItems.map((item, index) => (
-              // 2. Add the onClick handler to the Card
               <Card
                 key={index}
                 className="group overflow-hidden cursor-pointer elegant-shadow hover:glow transition-all duration-500 animate-fade-in-up"
@@ -55,21 +46,16 @@ const Portfolio = () => {
                 onClick={() => setSelectedVideo(item.video)}
               >
                 <div className="relative aspect-video overflow-hidden">
-                  
-                  {/* 3. Display the thumbnail IMG, not the VIDEO */}
                   <img
                     src={item.thumbnail}
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  
-                  {/* Play button overlay */}
                   <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                     <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
                       <svg className="w-8 h-8 text-primary-foreground ml-1" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
                     </div>
                   </div>
-
                 </div>
                 <div className="p-6">
                   <Badge variant="secondary" className="mb-3">{item.category}</Badge>
@@ -81,11 +67,11 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* 4. Conditionally render the modal at the end */}
+      {/* Conditionally render the modal at the end */}
       {selectedVideo && (
-        <VideoModal 
-          videoSrc={selectedVideo} 
-          onClose={() => setSelectedVideo(null)} 
+        <VideoModal
+          videoSrc={selectedVideo}
+          onClose={() => setSelectedVideo(null)}
         />
       )}
     </>
