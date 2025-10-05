@@ -32,7 +32,7 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-6 z-10 text-center">
         <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
-          <h6 className="text-5xl md:text-8xl lg:text-6xl font-display font-bold leading-tight mt-10">
+          <h6 className="text-5xl md:text-8xl lg:text-6xl font-display font-bold leading-tight mt-20">
             Crafting Powerful Stories
             <br />
             <span className="text-gradient">With Elegance You Can Trust</span>
